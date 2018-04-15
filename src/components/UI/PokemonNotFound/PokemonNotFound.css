@@ -1,0 +1,12 @@
+.Pokemon-404-msg {
+    min-width: 100%;
+    width: 0;
+}
+
+.Pokemon-404-img {
+    background-image: url(https://media.giphy.com/media/u7nXiwsXFpv8I/giphy.gif);
+    background-size: contain;
+    background-position: center;
+    height: 352px;
+    background-repeat: no-repeat;
+}
