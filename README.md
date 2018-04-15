@@ -44,4 +44,4 @@ Now let's add them to the lineup.
 ### Add to Lineup
 ![Add to Lineup](./screenshots/screenshot-add-to-lineup.png "Add to Lineup")
 
-The green info box will be replaced by all the pokemon you choose to add, a maximum of 6 pokemon may be added.
+The green info box will be replaced by all the pokemon you choose to add, a maximum of 6 pokemon may be added. Additionally, you may remove a pokemon that you already added by clicking the `x` in the top right hand corner of the portrait.
