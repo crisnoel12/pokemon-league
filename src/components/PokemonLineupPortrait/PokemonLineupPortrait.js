@@ -7,7 +7,7 @@ const PokemonLineupPortrait = (props) => {
         pokemonLineup = (
             <div className="Flex-row Flex-1">
                 <div className="Info-block Col">
-                    <p>Search for pokemon to add to your lineup.</p>
+                    <p>Search for pokemon to add to your lineup. Maximum (6).</p>
                 </div>
             </div>
         );
