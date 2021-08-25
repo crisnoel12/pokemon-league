@@ -2,5 +2,6 @@ export {
     fetchPokemon,
     viewPokemonData,
     addPokemonToLineup,
-    removePokemonFromLineup
+    removePokemonFromLineup,
+    updatePokemonQuery
 } from './pokemon';

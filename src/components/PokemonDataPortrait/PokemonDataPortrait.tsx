@@ -1,11 +1,14 @@
-import React from 'react';
+import { INITIAL_STATE } from '../../store/reducers/reducer';
 
-const PokemonDataPortrait = (props) => {
+type PROPS = Partial<INITIAL_STATE>
+
+const PokemonDataPortrait = (props: PROPS) => {
+    const { selectedPokemon } = props;
     let pokemonData = null;
 
-    if (props.selectedPokemon !== null) {
-        let pokemon = props.selectedPokemon;
-        let pokemonTypes = pokemon.types.map((type, i, arr) => {
+    if (selectedPokemon) {
+        let pokemon = selectedPokemon;
+        let pokemonTypes = pokemon.types.map((type: {[key: string]: any}, i: number, arr: any[]) => {
             if (arr.length - 1 === i) {
                 return (
                     <span key={i}>
@@ -20,7 +23,7 @@ const PokemonDataPortrait = (props) => {
                 )
             }
         });
-        let pokemonAbilities = pokemon.abilities.map((ability, i, arr) => {
+        let pokemonAbilities = pokemon.abilities.map((ability: {[key: string]: any}, i: number, arr: any[]) => {
             if (arr.length - 1 === i) {
                 return (
                     <span key={i}>
@@ -35,7 +38,7 @@ const PokemonDataPortrait = (props) => {
                 )
             }
         });
-        let pokemonStats = pokemon.stats.slice(0).reverse().map((stat, i) => {
+        let pokemonStats = pokemon.stats.slice(0).reverse().map((stat: {[key: string]: any}, i: number) => {
             return (
                 <li key={i}><span className="bold capitalize">{stat.stat.name}:</span> <span>{stat.base_stat}</span></li>
             );

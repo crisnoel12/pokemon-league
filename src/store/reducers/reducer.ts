@@ -1,14 +1,25 @@
+import { POKEMON, POKEMON_ACTION} from '../../types';
 import * as actionTypes from '../actions/actionTypes';
 
-const initalState = {
+export type INITIAL_STATE = {
+    fetchedPokemon: POKEMON | null,
+    pokemon404: boolean,
+    selectedPokemon: POKEMON | null,
+    pokemonLineup: POKEMON[],
+    isLoading: boolean,
+    pokemonQuery: string
+}
+
+const initalState: INITIAL_STATE = {
     fetchedPokemon: null,
     pokemon404: false,
     selectedPokemon: null,
     pokemonLineup: [],
-    isLoading: false
+    isLoading: false,
+    pokemonQuery: ''
 }
 
-const reducer = (state = initalState, action) => {
+const reducer = (state: INITIAL_STATE = initalState, action: POKEMON_ACTION) => {
     switch(action.type) {
         case actionTypes.FETCH_POKEMON_START:
             return {
@@ -43,8 +54,13 @@ const reducer = (state = initalState, action) => {
         case actionTypes.REMOVE_POKEMON_FROM_LINEUP:
             return {
                 ...state,
-                pokemonLineup: state.pokemonLineup.filter((pokemon) => pokemon.id !== action.id)
+                pokemonLineup: state.pokemonLineup.filter((pokemon: POKEMON) => pokemon.id !== action.pokemon.id)
             };
+        case actionTypes.UPDATE_POKEMON_QUERY:
+            return {
+                ...state,
+                pokemonQuery: action.pokemonQuery
+            }
         default:
             return state;
     }
