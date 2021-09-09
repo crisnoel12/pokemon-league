@@ -1,7 +1,7 @@
 import { POKEMON, POKEMON_ACTION} from '../../types';
 import * as actionTypes from '../actions/actionTypes';
 
-export type INITIAL_STATE = {
+export interface INITIAL_STATE {
     fetchedPokemon: POKEMON | null,
     pokemon404: boolean,
     selectedPokemon: POKEMON | null,
@@ -41,10 +41,15 @@ const reducer = (state: INITIAL_STATE = initalState, action: POKEMON_ACTION) => 
                 pokemon404: true,
                 isLoading: false
             };
-        case actionTypes.VIEW_POKEMON_DATA:
+        case actionTypes.SELECT_POKEMON:
             return {
                 ...state,
                 selectedPokemon: action.pokemon
+            };
+        case actionTypes.DESELECT_POKEMON:
+            return {
+                ...state,
+                selectedPokemon: null
             };
         case actionTypes.ADD_POKEMON_TO_LINEUP:
             return {

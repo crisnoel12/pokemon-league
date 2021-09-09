@@ -1,10 +1,11 @@
-import './Header.css';
+import HeaderStyles from './HeaderStyles';
 
 const Header = () => {
+    const classes = HeaderStyles();
     return (
         <div>
-            <header className="App-header">
-                <h1 className="App-title">Pokemon League</h1>
+            <header className={classes.App_Header}>
+                <h1 className={classes.App_Title}>Pokemon League</h1>
             </header>
         </div>
     );

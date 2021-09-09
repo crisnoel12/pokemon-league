@@ -1,14 +1,15 @@
-import React from 'react';
+import { Typography } from '@material-ui/core';
 import { INITIAL_STATE } from '../../../store/reducers/reducer';
-import './PokemonNotFound.css';
+import PokemonNotFoundStyles from './PokemonNotFoundStyles';
 
-type PROPS = Partial<INITIAL_STATE>;
+interface PROPS extends Partial<INITIAL_STATE> {}
 
 const PokemonNotFound = ({ pokemonQuery }: PROPS) => {
+  const classes = PokemonNotFoundStyles();
     return (
-        <div className="Col">
-          <p className="Pokemon-404-msg">Sorry, the pokemon `{pokemonQuery}` could not be found.</p>
-          <div className="Pokemon-404-img"></div>
+        <div>
+          <Typography className={classes.Pokemon_404_msg}>Sorry, the pokemon `{pokemonQuery}` could not be found.</Typography>
+          <div className={classes.Pokemon_404_img}></div>
         </div>
     );
 };

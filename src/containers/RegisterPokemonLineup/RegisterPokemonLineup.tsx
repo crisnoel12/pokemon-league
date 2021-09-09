@@ -1,19 +1,24 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/styles';
+
 import * as actions from '../../store/actions/index';
 import { POKEMON } from '../../types';
-import PokemonSearchPortrait from '../../components/PokemonSearchPortrait/PokemonSearchPortrait';
-import PokemonDataPortrait from '../../components/PokemonDataPortrait/PokemonDataPortrait';
-import PokemonLineupPortrait from '../../components/PokemonLineupPortrait/PokemonLineupPortrait';
-import './RegisterPokemonLineup.css';
+import PokemonSearch from '../../components/PokemonSearch/PokemonSearch';
+import PokemonData from '../../components/PokemonData/PokemonData';
+import PokemonLineup from '../../components/PokemonLineup/PokemonLineup';
 import { INITIAL_STATE } from '../../store/reducers/reducer';
+import RegisterPokemonLineupStyles from "./RegisterPokemonLineupStyles";
+import { Grid, Typography } from '@material-ui/core';
 
-type PROPS = INITIAL_STATE & {
+interface PROPS extends INITIAL_STATE {
     doFetchPokemonHandler: (query: string) => any,
     doAddPokemonToLineupHandler: (pokemon: POKEMON) => any,
     doRemovePokemonFromLineupHandler: (pokemon: POKEMON) => void,
-    doViewPokemonDataHandler: (pokemon: POKEMON) => any,
-    doUpdatePokemonQueryHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
+    doSelectPokemonHandler: (pokemon: POKEMON) => any,
+    doDeselectPokemonHandler: () => any,
+    doUpdatePokemonQueryHandler: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    classes: { [key: string]: any }
 }
 
 class RegisterPokemonLineup extends Component<PROPS> {
@@ -43,51 +48,46 @@ class RegisterPokemonLineup extends Component<PROPS> {
     render() {
         const { 
             doRemovePokemonFromLineupHandler,
-            doViewPokemonDataHandler,
+            doSelectPokemonHandler,
+            doDeselectPokemonHandler,
             doUpdatePokemonQueryHandler,
             selectedPokemon,
             pokemonLineup,
             isLoading,
             fetchedPokemon,
             pokemon404,
-            pokemonQuery
+            pokemonQuery,
+            classes
         } = this.props;
         return (
-            <div>
-                <div className="Pokemon-form Flex-row Flex-2">
-
-                    {/* Pokemon Lineup + Data Column */}
-                    <div className="Col">
-                        <div className="Pokemon-lineup">
-                            <h2 className="text-left subheading">Pokemon Lineup</h2>
-                            <PokemonLineupPortrait
-                                pokemonLineup={pokemonLineup}
-                                doRemovePokemon={(pokemon: POKEMON) => doRemovePokemonFromLineupHandler(pokemon)} />
-                        </div>
-                        <div className="Pokemon-data">
-                            <PokemonDataPortrait selectedPokemon={selectedPokemon} />
-                        </div>
-                    </div>
-
-                    {/* Pokemon Search Column */}
-                    <div className="Col">
-                        <div className="Pokedex">
-                            <form className="Pokemon-search-form" onSubmit={this.fetchPokemonHandler}>
-                                <input type="text" name="query" placeholder="Search Pokemon (e.g. Pikachu and press enter)" value={pokemonQuery} onChange={doUpdatePokemonQueryHandler} />
+            <div style={{ padding: "30px" }}>
+                <Grid container spacing={6}>
+                    <Grid item xs={6}> {/* Pokemon Lineup + Data Column */}
+                        <Typography variant={"h4"} className={classes.Pokemon_Lineup_Heading}>Pokemon Lineup</Typography>
+                        <PokemonLineup
+                            pokemonLineup={pokemonLineup}
+                            doRemovePokemon={(pokemon: POKEMON) => doRemovePokemonFromLineupHandler(pokemon)} />
+                        <PokemonData
+                            selectedPokemon={selectedPokemon} 
+                            deselectPokemon={doDeselectPokemonHandler}
+                        />
+                    </Grid>
+                    <Grid item xs={6}> {/* Pokemon Search Column */}
+                        <div className={classes.Pokedex}>
+                            <form className={classes.Pokemon_Search_Form} onSubmit={this.fetchPokemonHandler}>
+                                <input className={classes.Pokemon_Searchbox} type="text" name="query" placeholder="Search Pokemon (e.g. Pikachu and press enter)" value={pokemonQuery} onChange={doUpdatePokemonQueryHandler} />
                             </form>
-                            <div className="Search-results">
-                                <PokemonSearchPortrait
-                                    isLoading={isLoading}
-                                    fetchedPokemon={fetchedPokemon}
-                                    pokemon404={pokemon404}
-                                    pokemonQuery={pokemonQuery}
-                                    doSelectPokemon={() => fetchedPokemon && doViewPokemonDataHandler(fetchedPokemon)}
-                                    doAddPokemon={() => this.addPokemonToLineupHandler()} 
-                                />
-                            </div>
+                            <PokemonSearch
+                                isLoading={isLoading}
+                                fetchedPokemon={fetchedPokemon}
+                                pokemon404={pokemon404}
+                                pokemonQuery={pokemonQuery}
+                                doSelectPokemon={() => fetchedPokemon && doSelectPokemonHandler(fetchedPokemon)}
+                                doAddPokemon={() => this.addPokemonToLineupHandler()} 
+                            />
                         </div>
-                    </div>
-                </div>
+                    </Grid>
+                </Grid>
             </div>
         );
     }
@@ -107,11 +107,12 @@ const mapStateToProps = (state: INITIAL_STATE) => {
 const mapDispatchToProps = (dispatch: any) => {
     return {
         doFetchPokemonHandler: (query: string) => dispatch(actions.fetchPokemon(query)),
-        doViewPokemonDataHandler: (pokemon: POKEMON) => dispatch(actions.viewPokemonData(pokemon)),
+        doSelectPokemonHandler: (pokemon: POKEMON) => dispatch(actions.selectPokemon(pokemon)),
+        doDeselectPokemonHandler: () => dispatch(actions.deselectPokemon()),
         doAddPokemonToLineupHandler: (pokemon: POKEMON) => dispatch(actions.addPokemonToLineup(pokemon)),
         doRemovePokemonFromLineupHandler: (pokemon: POKEMON) => dispatch(actions.removePokemonFromLineup(pokemon)),
         doUpdatePokemonQueryHandler: (e: React.ChangeEvent<HTMLInputElement>) => dispatch(actions.updatePokemonQuery(e))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterPokemonLineup);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(RegisterPokemonLineupStyles)(RegisterPokemonLineup));
