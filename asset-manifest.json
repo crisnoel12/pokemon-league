@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/pokemon-league/static/css/main.31305089.chunk.css",
-    "main.js": "/pokemon-league/static/js/main.9db7693e.chunk.js",
-    "main.js.map": "/pokemon-league/static/js/main.9db7693e.chunk.js.map",
-    "runtime-main.js": "/pokemon-league/static/js/runtime-main.da6eaa7a.js",
-    "runtime-main.js.map": "/pokemon-league/static/js/runtime-main.da6eaa7a.js.map",
-    "static/js/2.07be37ea.chunk.js": "/pokemon-league/static/js/2.07be37ea.chunk.js",
-    "static/js/2.07be37ea.chunk.js.map": "/pokemon-league/static/js/2.07be37ea.chunk.js.map",
-    "static/js/3.6190cc75.chunk.js": "/pokemon-league/static/js/3.6190cc75.chunk.js",
-    "static/js/3.6190cc75.chunk.js.map": "/pokemon-league/static/js/3.6190cc75.chunk.js.map",
+    "main.css": "/pokemon-league/static/css/main.dd960de1.chunk.css",
+    "main.js": "/pokemon-league/static/js/main.8b5c1316.chunk.js",
+    "main.js.map": "/pokemon-league/static/js/main.8b5c1316.chunk.js.map",
+    "runtime-main.js": "/pokemon-league/static/js/runtime-main.30db56cd.js",
+    "runtime-main.js.map": "/pokemon-league/static/js/runtime-main.30db56cd.js.map",
+    "static/js/2.d664bd9e.chunk.js": "/pokemon-league/static/js/2.d664bd9e.chunk.js",
+    "static/js/2.d664bd9e.chunk.js.map": "/pokemon-league/static/js/2.d664bd9e.chunk.js.map",
+    "static/js/3.7098f434.chunk.js": "/pokemon-league/static/js/3.7098f434.chunk.js",
+    "static/js/3.7098f434.chunk.js.map": "/pokemon-league/static/js/3.7098f434.chunk.js.map",
     "index.html": "/pokemon-league/index.html",
-    "static/css/main.31305089.chunk.css.map": "/pokemon-league/static/css/main.31305089.chunk.css.map",
-    "static/js/2.07be37ea.chunk.js.LICENSE.txt": "/pokemon-league/static/js/2.07be37ea.chunk.js.LICENSE.txt"
+    "static/css/main.dd960de1.chunk.css.map": "/pokemon-league/static/css/main.dd960de1.chunk.css.map",
+    "static/js/2.d664bd9e.chunk.js.LICENSE.txt": "/pokemon-league/static/js/2.d664bd9e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.da6eaa7a.js",
-    "static/js/2.07be37ea.chunk.js",
-    "static/css/main.31305089.chunk.css",
-    "static/js/main.9db7693e.chunk.js"
+    "static/js/runtime-main.30db56cd.js",
+    "static/js/2.d664bd9e.chunk.js",
+    "static/css/main.dd960de1.chunk.css",
+    "static/js/main.8b5c1316.chunk.js"
   ]
 }
