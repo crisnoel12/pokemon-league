@@ -1,16 +1,27 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { createStyles, withStyles } from '@material-ui/styles';
 
-import './App.css';
 import Header from './components/UI/Header/Header';
 import Hero from './components/Hero/Hero';
 import RegisterPokemonLineup from './containers/RegisterPokemonLineup/RegisterPokemonLineup';
 import PageNotFound from './components/UI/PageNotFound/PageNotFound';
 
-class App extends Component {
+const styles = createStyles({
+  App: {
+    textAlign: 'center'
+  }
+});
+
+interface PROPS {
+  classes: { [key: string]: any }
+}
+
+class App extends Component<PROPS> {
   render() {
+    const { classes } = this.props;
     return (
-      <div className="App">
+      <div className={classes.App}>
         <Header/>
         <Switch>
           <Route path="/register-pokemon-lineup" component={RegisterPokemonLineup}/>
@@ -22,4 +33,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

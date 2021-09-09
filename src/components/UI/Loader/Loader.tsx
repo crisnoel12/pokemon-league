@@ -1,9 +1,10 @@
-import './Loader.css';
+import LoaderStyles from "./LoaderStyles";
 
 const Loader = () => {
+    const classes = LoaderStyles();
     return (
-        <div className="loader">
-            <span className="Loader-text">PLEASE WAIT</span>
+        <div>
+            <span className={classes.loaderText}>PLEASE WAIT</span>
         </div>
     );
 };

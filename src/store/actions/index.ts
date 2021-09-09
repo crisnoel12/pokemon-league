@@ -1,6 +1,7 @@
 export { 
     fetchPokemon,
-    viewPokemonData,
+    selectPokemon,
+    deselectPokemon,
     addPokemonToLineup,
     removePokemonFromLineup,
     updatePokemonQuery

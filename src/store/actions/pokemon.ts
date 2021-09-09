@@ -43,10 +43,16 @@ export const fetchPokemon = (query: string) => {
     }
 }
 
-export const viewPokemonData = (pokemon: POKEMON) => {
+export const selectPokemon = (pokemon: POKEMON) => {
     return {
-        type: actionTypes.VIEW_POKEMON_DATA,
+        type: actionTypes.SELECT_POKEMON,
         pokemon: pokemon
+    }
+}
+
+export const deselectPokemon = () => {
+    return {
+        type: actionTypes.DESELECT_POKEMON
     }
 }
 
