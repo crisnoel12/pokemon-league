@@ -32,7 +32,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter basename="/pokemon-league/">
+        <BrowserRouter>
             <App />
         </BrowserRouter>
     </Provider>, 
